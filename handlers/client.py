@@ -43,7 +43,8 @@ async def show_gallery(message: types.Message):
     Проказывает альбомы которые есть в галерее
     """
     gallery = "\n".join(show_names())
-    text = f"""Hello type #hashtag which one you wanna see and i will send you gallery \n 
+    text = f"""Hello type #hashtag which one you wanna see and i will send you gallery \n
+    This is what we have :  
     {gallery}
 """
     await bot.send_message(message.from_user.id, text)
