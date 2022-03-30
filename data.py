@@ -2,8 +2,6 @@ import shelve
 
 file_name = 'data_base'
 
-test_data = {'#borjomi': ['AQADo70xG6K4mUl4', 'AQADo70xG6K4mUly', 'AQADo70xG6K4mUl9']}  # '
-
 
 def write_db(new_data):
     with shelve.open(file_name) as db:
@@ -22,16 +20,22 @@ def check_data():
                  f'items : {list(db.values())}\n'
         return result
 
-def read_db():
+
+def show_names():
     with shelve.open(file_name) as db:
-        return dict(db)
+        return [key for key in db]
+
+
+def get_ids(key):
+    with shelve.open(file_name) as db:
+        return [photo_id for photo_id in db[key]]
+
 
 def clear_db():
     with shelve.open(file_name) as db:
         db.clear()
 
 
-
 if __name__ == "__main__":
-    write_db(test_data)
-    read_db()
+    print(show_names())
+    clear_db()
